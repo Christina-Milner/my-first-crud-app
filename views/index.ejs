@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prototype Modelshow Registration</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="main.js" defer></script>
+</head>
+
+<body>
+    <h1>Miniatures Show Registration</h1>
+    <button id="addButton">Add Entry</button>
+    <form action="/addEntry" method="POST" id="inputForm" class="hidden">
+        <input type ="hidden" name="entryId" id="secretIdBox">
+        <div id="forID">
+        </div>
+        <div>
+        <label for="name">Name</label>
+        <input type="text" placeholder="Full name" name="name">
+        </div>
+        <div>
+        <label for="numOfModels">Number of models</label>
+        <input type="number" placeholder="0" name="numOfModels">
+        </div>
+        <div>
+        <input type="radio" id="yesInComp" name="inComp" value="yesInComp" checked>
+        <label for="yesInComp">In competition</label>
+        <input type="radio" id="notInComp" name="inComp" value="notInComp">
+        <label for="notInComp">Not in competition</label>
+        </div>
+        <input type="submit">
+    </form>
+    <div class="entries">
+    </div>
+
+
+</body>

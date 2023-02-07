@@ -1,0 +1,11 @@
+html {
+    font-family: sans-serif;
+}
+
+form {
+    display: block;
+}
+
+.hidden {
+    display: none;
+}
