@@ -41,15 +41,51 @@ app.listen(process.env.PORT || PORT, ()=>{
 })
 
 app.post('/addEntry', (request, response) => {
-    db.collection('modelShowRegTest').insertOne({
-        id: Number(request.body.entryId),
-        fullName: request.body.name,
-        numOfModels: Number(request.body.numOfModels),
-        inCompetition: request.body.inComp == "yesInComp",
-        prizes: {}})
+    db.collection('modelShowRegTest').updateOne({
+        id: Number(request.body.entryId)},{
+            $set:{
+                fullName: request.body.name,
+                numOfModels: Number(request.body.numOfModels),
+                inCompetition: request.body.inComp == "yesInComp"
+                }
+            })
     .then(result => {
         console.log('Entry Added')
         response.redirect('/')
+    })
+    .catch(error => console.error(error))
+})
+
+app.post('/postEntry', async (request, response) => {
+    async function getID() {
+        let entries = await db.collection('modelShowRegTest').find().toArray()
+        console.log(entries.length)
+        return entries.length
+    }
+    async function getLastID() {
+        let entries = await db.collection('modelShowRegTest').find().toArray()
+        let length = entries.length
+        let entry = entries[length - 1]
+
+        return entry.id
+    }
+    let currentID = await getID().then(res => res + 1)
+    .then(async res => {
+        await db.collection('modelShowRegTest').insertOne({
+            id: res,
+            fullName: "",
+            numOfModels: 0,
+            inCompetition: false,
+            prizes: {}})
+        return res
+    })
+    .then(async result => {
+        let lastID = await getLastID()
+        return lastID
+    })
+    .then(result => {
+        console.log('Entry Added')
+        response.send(String(result))
     })
     .catch(error => console.error(error))
 })

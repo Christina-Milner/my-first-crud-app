@@ -14,7 +14,14 @@ const addButton = document.querySelector('#addButton')
 addButton.addEventListener('click', openAddForm)
 
 async function openAddForm() {
-    const res = await fetch('/numOfEntries')
+    const res = await fetch('/postEntry', {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json, text/plain, */*',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({})
+    })
     let id = await res.text()
     id = Number(id)
 
