@@ -19,22 +19,64 @@
         <div id="forID">
         </div>
         <div>
-        <label for="name">Name</label>
-        <input type="text" placeholder="Full name" name="name">
+            <label for="name">Name</label>
+            <input type="text" placeholder="Full name" name="name" id="name">
         </div>
         <div>
-        <label for="numOfModels">Number of models</label>
-        <input type="number" placeholder="0" name="numOfModels">
+            <label for="numOfModels">Number of models</label>
+            <input type="number" placeholder="0" name="numOfModels" id="numOfModels">
         </div>
         <div>
-        <input type="radio" id="yesInComp" name="inComp" value="yesInComp" checked>
-        <label for="yesInComp">In competition</label>
-        <input type="radio" id="notInComp" name="inComp" value="notInComp">
-        <label for="notInComp">Not in competition</label>
+            <input type="radio" id="yesInComp" name="inComp" value="yesInComp" checked>
+            <label for="yesInComp">In competition</label>
+            <input type="radio" id="notInComp" name="inComp" value="notInComp">
+            <label for="notInComp">Not in competition</label>
         </div>
+        <div>
+            <input type="radio" id="yesJudged" name="judged" value="yesJudged">
+            <label for="yesJudged">Judged</label>
+            <input type="radio" id="notJudged" name="judged" value="notJudged" checked>
+            <label for="notJudged">Not judged</label>
+        </div>
+        <fieldset id="prizes" class="hidden">
+            <legend>Prizes:</legend>
+            <div>
+                <input type="radio" id="bronze" name="medals" value="bronze">
+                <label for="bronze">Bronze</label>
+                <input type="radio" id="silver" name="medals" value="silver">
+                <label for="silver">Silver</label>
+                <input type="radio" id="gold" name="medals" value="gold">
+                <label for="gold">Gold</label>
+            <div>
+                <input type="checkbox" id="bestOfShow" name="bestOfShow">
+                <label for="bestOfShow">Best in Show</label>
+                <input type="checkbox" id="junBestOfShow" name="junBestOfShow">
+                <label for="junBestOfShow">Junior Best in Show</label>
+                <input type="checkbox" id="corrr" name="corrrw">
+                <label for="corrr">CORRR</label>
+                <input type="checkbox" id="peoplesChoice" name="peoplesChoice">   <!-- Figure out how to handle the sponsor prizes free text field-->
+                <label for="peoplesChoice">People's Choice</label>
+            </div>
+            
+        </fieldset>
         <input type="submit">
     </form>
     <div class="entries">
+        <% for(let i = 0; i < info.length; i++) {%>
+            <div class="entry" id=<%= info[i].id %>>
+                <div>
+                    <p>Number:</p>
+                    <p>Full name:</p>
+                    <p>Models:</p>
+                </div>
+                <div>
+                    <p><%= info[i].id %></p>
+                    <p><%= info[i].fullName %></p>
+                    <p><%= info[i].numOfModels %></p>
+                </div>
+                <button class="hidden editThis">Edit this entry</button>
+            </div>
+        <% } %>
     </div>
 
 

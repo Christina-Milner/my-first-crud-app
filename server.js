@@ -35,10 +35,11 @@ app.get('/numOfEntries',(request, response)=>{
     .catch(error => console.error(error))
 })
 
-
-app.listen(process.env.PORT || PORT, ()=>{
-    console.log(`Server running on port ${PORT}`)
+app.get('/ID_:id', (req, res) => {
+    db.collection('modelShowRegTest').findOne({id: Number(req.params.id)})
+    .then(data => res.json(data))
 })
+
 
 app.post('/addEntry', (request, response) => {
     db.collection('modelShowRegTest').updateOne({
@@ -46,7 +47,8 @@ app.post('/addEntry', (request, response) => {
             $set:{
                 fullName: request.body.name,
                 numOfModels: Number(request.body.numOfModels),
-                inCompetition: request.body.inComp == "yesInComp"
+                inCompetition: request.body.inComp == "yesInComp",
+                judged: request.body.judged == "yesJudged"  /* add the prizes */
                 }
             })
     .then(result => {
@@ -59,7 +61,6 @@ app.post('/addEntry', (request, response) => {
 app.post('/postEntry', async (request, response) => {
     async function getID() {
         let entries = await db.collection('modelShowRegTest').find().toArray()
-        console.log(entries.length)
         return entries.length
     }
     async function getLastID() {
@@ -88,4 +89,8 @@ app.post('/postEntry', async (request, response) => {
         response.send(String(result))
     })
     .catch(error => console.error(error))
+})
+
+app.listen(process.env.PORT || PORT, ()=>{
+    console.log(`Server running on port ${PORT}`)
 })

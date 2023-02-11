@@ -7,5 +7,15 @@ form {
 }
 
 .hidden {
-    display: none;
+    display: none !important;
+}
+
+.entries {
+    display: flex;
+    flex-flow: column wrap;
+}
+
+.entry {
+    display: flex;
+    border: 2px solid grey;
 }
