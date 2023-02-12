@@ -1,14 +1,15 @@
 /* To do:
 - Add CSS to make it look not horrible
-- Add default listing of all elements on page
-- Add "edit entry" button
+- Add default listing of all elements on page (done)
+- Add "edit entry" button (done)
     - Clicking an entry should then open the form for editing it and allow doing so
     - In editing view, there also needs to be the option to add prizes (which are not a thing on entry creation)
 - Add functionality to filter by prizes
-- Change add entry functionality so multiple people can't create an entry with the same id at the same time
+- Change add entry functionality so multiple people can't create an entry with the same id at the same time (done)
+- Now split up across 3 pages - all entries should always be clickable on judging page, with prizes available
+- Add CSS for judging page to colour differentiate not in competition / judged/ not judged
+- Only prizes available for not in comp are People's Choice and Sponsor prizes
 */
-
-
 const addButton = document.querySelector('#addButton')
 const editButton = document.querySelector('#editEntries')
 
@@ -16,7 +17,7 @@ addButton.addEventListener('click', openAddForm)
 editButton.addEventListener('click', editEntries)
 
 async function openAddForm() {
-    document.querySelectorAll('.entry').removeEventListener('click', showEditButton)
+    document.querySelectorAll('.entry').forEach(e => e.removeEventListener('click', event => editThis(event.target.parentElement)))
     const res = await fetch('/postEntry', {
         method: 'POST',
         headers: {

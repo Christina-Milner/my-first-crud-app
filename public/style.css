@@ -19,3 +19,17 @@ form {
     display: flex;
     border: 2px solid grey;
 }
+
+.titleNav, .pageNav {
+    display: flex;
+}
+
+.titleNav > span, .pageNav > span {
+    padding: 2em;
+    background-color: #000;
+}
+
+a {
+    color: #fff;
+    text-decoration: none;
+}

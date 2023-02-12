@@ -27,6 +27,31 @@ app.get('/',(request, response)=>{
     .catch(error => console.error(error))
 })
 
+app.get('/registration',(request, response)=>{
+    db.collection('modelShowRegTest').find().toArray()
+    .then(data => {
+        response.render('registration.ejs', { info: data })
+    })
+    .catch(error => console.error(error))
+})
+
+app.get('/judging',(request, response)=>{
+    db.collection('modelShowRegTest').find().toArray()
+    .then(data => {
+        response.render('judging.ejs', { info: data })
+    })
+    .catch(error => console.error(error))
+})
+
+app.get('/filters',(request, response)=>{
+    db.collection('modelShowRegTest').find().toArray()
+    .then(data => {
+        response.render('filters.ejs', { info: data })
+    })
+    .catch(error => console.error(error))
+})
+
+
 app.get('/numOfEntries',(request, response)=>{
     db.collection('modelShowRegTest').find().toArray()
     .then(data => {
@@ -48,12 +73,12 @@ app.post('/addEntry', (request, response) => {
                 fullName: request.body.name,
                 numOfModels: Number(request.body.numOfModels),
                 inCompetition: request.body.inComp == "yesInComp",
-                judged: request.body.judged == "yesJudged"  /* add the prizes */
+                junior: request.body.junior == "yesJunior"  /* add the prizes */
                 }
             })
     .then(result => {
         console.log('Entry Added')
-        response.redirect('/')
+        response.redirect('/registration')
     })
     .catch(error => console.error(error))
 })
