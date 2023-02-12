@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prototype Modelshow Registration</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="main.js" defer></script>
+</head>
+
+<body>
+    <nav class = "pageNav">
+        <span><a href="/registration">Registration</a></span>
+        <span><a href="/judging">Judging<span></a></span>
+        <span><a href="/filters">View/Filter entries</span></a>
+    </nav>
+
+<h1>Register entrants</h1>
+<button id="addButton">Add Entry</button>
+<button id="editEntries">Edit an entry</button>
+<form action="/addEntry" method="POST" id="inputForm" class="hidden">
+    <input type ="hidden" name="entryId" id="secretIdBox">
+    <div id="forID">
+    </div>
+    <div>
+        <label for="name">Name</label>
+        <input type="text" placeholder="Full name" name="name" id="name">
+    </div>
+    <div>
+        <label for="numOfModels">Number of models</label>
+        <input type="number" placeholder="0" name="numOfModels" id="numOfModels">
+    </div>
+    <div>
+        <input type="radio" id="yesInComp" name="inComp" value="yesInComp" checked>
+        <label for="yesInComp">In competition</label>
+        <input type="radio" id="notInComp" name="inComp" value="notInComp">
+        <label for="notInComp">Not in competition</label>
+    </div>
+    <div>
+        <input type="radio" id="notJunior" name="junior" value="notJunior" checked>
+        <label for="notJunior">Adult</label>
+        <input type="radio" id="yesJunior" name="junior" value="yesJunior">
+        <label for="yesJunior">Junior</label>
+    </div>
+    <input type="submit">
+</form>
+<div class="entries">
+    <% for(let i = 0; i < info.length; i++) {%>
+        <div class="entry" id=<%= info[i].id %>>
+            <div>
+                <p>Number:</p>
+                <p>Full name:</p>
+                <p>Models:</p>
+            </div>
+            <div>
+                <p><%= info[i].id %></p>
+                <p><%= info[i].fullName %></p>
+                <p><%= info[i].numOfModels %></p>
+            </div>
+            <button class="hidden editThis">Edit this entry</button>
+        </div>
+    <% } %>
+</div>
+</body>
