@@ -19,7 +19,7 @@
 <h1>Register entrants</h1>
 <button id="addButton">Add Entry</button>
 <button id="editEntries">Edit an entry</button>
-<form action="/addEntry" method="POST" id="inputForm" class="hidden">
+<form action="/addEntryReg" method="POST" id="inputForm" class="hidden">
     <input type ="hidden" name="entryId" id="secretIdBox">
     <div id="forID">
     </div>
@@ -28,7 +28,7 @@
         <input type="text" placeholder="Full name" name="name" id="name">
     </div>
     <div>
-        <label for="numOfModels">Number of models</label>
+        <label for="numOfModels">Models</label>
         <input type="number" placeholder="0" name="numOfModels" id="numOfModels">
     </div>
     <div>
@@ -50,7 +50,7 @@
         <div class="entry" id=<%= info[i].id %>>
             <div>
                 <p>Number:</p>
-                <p>Full name:</p>
+                <p>Name:</p>
                 <p>Models:</p>
             </div>
             <div>

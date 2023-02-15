@@ -13,7 +13,7 @@ MongoClient.connect(dbConnectionStr, { useUnifiedTopology: true })
         console.log(`Connected to ${dbName} Database`)
         db = client.db(dbName)
     })
-    
+      
 app.set('view engine', 'ejs')
 app.use(express.static('public'))
 app.use(express.urlencoded({ extended: true }))
@@ -41,7 +41,7 @@ app.get('/judging',(request, response)=>{
         response.render('judging.ejs', { info: data })
     })
     .catch(error => console.error(error))
-})
+}) 
 
 app.get('/filters',(request, response)=>{
     db.collection('modelShowRegTest').find().toArray()
@@ -66,14 +66,16 @@ app.get('/ID_:id', (req, res) => {
 })
 
 
-app.post('/addEntry', (request, response) => {
+app.post('/addEntryReg', (request, response) => {
+    console.log(request.body)
     db.collection('modelShowRegTest').updateOne({
         id: Number(request.body.entryId)},{
             $set:{
                 fullName: request.body.name,
                 numOfModels: Number(request.body.numOfModels),
                 inCompetition: request.body.inComp == "yesInComp",
-                junior: request.body.junior == "yesJunior"  /* add the prizes */
+                junior: request.body.junior == "yesJunior",
+                judged: request.body.inComp == "yesInComp" ? request.body.judged == "yesJudged" : "N/A"
                 }
             })
     .then(result => {
@@ -83,6 +85,30 @@ app.post('/addEntry', (request, response) => {
     .catch(error => console.error(error))
 })
 
+app.post('/addEntryJudge', (request, response) => {
+    console.log(request.body)
+    db.collection('modelShowRegTest').updateOne({
+        id: Number(request.body.entryId)},{
+            $set:{
+                judged: request.body.judged == "N/A" || request.body.judged == "yesJudged",
+                prizes: {
+                    medal: request.body.medals,
+                    bestofShow: request.body.bestOfShow == "on",
+                    junBestOfShow: request.body.junBestOfShow == "on",
+                    corrr: request.body.corrr == "on",
+                    peoplesChoice: request.body.peoplesChoice == "on",
+                    sponsors: request.body.sponsors.split(',')
+                }
+                }
+            })
+    .then(result => {
+        console.log('Entry added')
+        response.redirect('/judging')
+    })
+    .catch(error => console.error(error))
+})
+
+ 
 app.post('/postEntry', async (request, response) => {
     async function getID() {
         let entries = await db.collection('modelShowRegTest').find().toArray()

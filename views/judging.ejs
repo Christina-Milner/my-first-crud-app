@@ -7,6 +7,7 @@
     <title>Prototype Modelshow Registration</title>
     <link rel="stylesheet" href="style.css">
     <script src="main.js" defer></script>
+    <script src="judging.js" defer></script>
 </head>
 
 <body>
@@ -15,27 +16,20 @@
         <span><a href="/judging">Judging<span></a></span>
         <span><a href="/filters">View/Filter entries</span></a>
     </nav>
-    <h1>Miniatures Show Registration</h1>
-    <button id="addButton">Add Entry</button>
-    <button id="editEntries">Edit an entry</button>
-    <button id="filterEntries">Filter list</button>
-    <form action="/addEntry" method="POST" id="inputForm" class="hidden">
+    <h1>Miniatures Show Judging</h1>
+    <form action="/addEntryJudge" method="POST" id="inputForm" class="hidden">
         <input type ="hidden" name="entryId" id="secretIdBox">
         <div id="forID">
         </div>
         <div>
-            <label for="name">Name</label>
-            <input type="text" placeholder="Full name" name="name" id="name">
+            <span>Name:</span>
+            <span id="name"></span>
         </div>
         <div>
-            <label for="numOfModels">Number of models</label>
-            <input type="number" placeholder="0" name="numOfModels" id="numOfModels">
+            <span>Models:</span>
+            <span id="numOfModels"></span>
         </div>
-        <div>
-            <input type="radio" id="yesInComp" name="inComp" value="yesInComp" checked>
-            <label for="yesInComp">In competition</label>
-            <input type="radio" id="notInComp" name="inComp" value="notInComp">
-            <label for="notInComp">Not in competition</label>
+        <div id="inComp">
         </div>
 
         <fieldset id="prizes" class="hidden">
@@ -58,10 +52,12 @@
                 <label for="bestOfShow">Best in Show</label>
                 <input type="checkbox" id="junBestOfShow" name="junBestOfShow">
                 <label for="junBestOfShow">Junior Best in Show</label>
-                <input type="checkbox" id="corrr" name="corrrw">
+                <input type="checkbox" id="corrr" name="corrr">
                 <label for="corrr">CORRR</label>
-                <input type="checkbox" id="peoplesChoice" name="peoplesChoice">   <!-- Figure out how to handle the sponsor prizes free text field-->
+                <input type="checkbox" id="peoplesChoice" name="peoplesChoice"> 
                 <label for="peoplesChoice">People's Choice</label>
+                <input type="text" id="sponsors" name="sponsors">
+                <label for="sponsors">Sponsor Prize</label>
             </div>
             
         </fieldset>
@@ -72,15 +68,14 @@
             <div class="entry" id=<%= info[i].id %>>
                 <div>
                     <p>Number:</p>
-                    <p>Full name:</p>
-                    <p>Models:</p>
+                    <p>Name:</p>
+                    <p>Judged:</p>
                 </div>
                 <div>
                     <p><%= info[i].id %></p>
                     <p><%= info[i].fullName %></p>
-                    <p><%= info[i].numOfModels %></p>
+                    <p><%= !info[i].judged ? "No" : info[i].judged == "N/A" ? "N/A" : "Yes" %></p>
                 </div>
-                <button class="hidden editThis">Edit this entry</button>
             </div>
         <% } %>
     </div>
