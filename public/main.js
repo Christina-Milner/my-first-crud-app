@@ -7,7 +7,7 @@
 - Now split up across 3 pages - all entries should always be clickable on judging page, with prizes available
 - Add CSS for judging page to colour differentiate not in competition / judged/ not judged
 - Only prizes available for not in comp are People's Choice and Sponsor prizes
-- Add functionality to check for entries with empty name so that IDs don't get incremented if someone clicks "add entry" and then goes to do something else
+- Add functionality to check for entries with empty name so that IDs don't get incremented if someone clicks "add entry" and then goes to do something else (done)
 - Get rid of "edit this entry" button and make reg entries editable like in judging view if "edit entry" is clicked
 */
 const addButton = document.querySelector('#addButton')

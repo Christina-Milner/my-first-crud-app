@@ -108,8 +108,8 @@ app.post('/addEntryJudge', (request, response) => {
     .catch(error => console.error(error))
 })
 
- 
-app.post('/postEntry', async (request, response) => {
+ // Feeling deprecated, might delete later
+/* app.post('/postEntry2', async (request, response) => {
     async function getID() {
         let entries = await db.collection('modelShowRegTest').find().toArray()
         return entries.length
@@ -141,6 +141,33 @@ app.post('/postEntry', async (request, response) => {
     })
     .catch(error => console.error(error))
 })
+*/
+
+app.post('/postEntry', (request, response) => {
+    db.collection('modelShowRegTest').find().toArray()
+    .then(res => {
+        let num = res.length
+        let lastEntry = res[num - 1]
+        if (!lastEntry.fullName) {
+            id = lastEntry.id
+            console.log("Empty entry detected!")
+            response.send(String(id))
+            return
+        }
+        id = lastEntry.id + 1
+        db.collection('modelShowRegTest').insertOne({
+            "id": id,
+            fullName: "",
+            numOfModels: 0,
+            inCompetition: false,
+            prizes: {}
+        })
+        console.log('Entry Added')
+        response.send(String(id))
+    })
+    .catch(error => console.error(error))
+})
+
 
 app.listen(process.env.PORT || PORT, ()=>{
     console.log(`Server running on port ${PORT}`)
