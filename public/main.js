@@ -77,3 +77,20 @@ async function editThis(element) {
         document.querySelector('#notInComp').checked = true
     }
 }
+
+// Filter page
+const bronzeButton = document.querySelector('#bronze')
+const silverButton = document.querySelector('#silver')
+const goldButton = document.querySelector('#gold')
+const corrrButton = document.querySelector('#corrr')
+
+const filterButtons = [bronzeButton, silverButton, goldButton, corrrButton]
+/*
+filterButtons.forEach(button => button.addEventListener('click', event => {
+    filterThis(event.explicitOriginalTarget.id)
+}))
+
+function filterThis(prize) {
+    
+}
+*/

@@ -51,6 +51,16 @@ app.get('/filters',(request, response)=>{
     .catch(error => console.error(error))
 })
 
+app.get('/filters:prize',(request, response)=>{
+    db.collection('modelShowRegTest').find().toArray()
+    .then(data => {
+        let prize = request.params.prize
+        data = data.filter(e => Object.values(e.prizes).includes(prize) || e.prizes[prize])
+        response.render('filters.ejs', { info: data })
+    })
+    .catch(error => console.error(error))
+})
+ 
 
 app.get('/numOfEntries',(request, response)=>{
     db.collection('modelShowRegTest').find().toArray()
