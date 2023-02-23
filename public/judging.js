@@ -24,10 +24,18 @@ document.addEventListener('DOMContentLoaded', function() {
     if (json.judged && json.judged !== "N/A") {
         document.querySelector('#yesJudged').checked = true
         document.querySelector('#notJudged').checked = false // Sort out not in competition
-    } else {
+    } else if (json.judged !== "N/A") {
         document.querySelector('#yesJudged').checked = false
         document.querySelector('#notJudged').checked = true
-
+    } else {
+        document.querySelector('#isJudged').classList.add('hidden')
+        document.querySelector('#forMedals').classList.add('hidden')
+        document.querySelector('#bestOfShow').classList.add('hidden')
+        document.querySelector('#forBestOfShow').classList.add('hidden')
+        document.querySelector('#junBestOfShow').classList.add('hidden')
+        document.querySelector('#forJunBestOfShow').classList.add('hidden')
+        document.querySelector('#corrr').classList.add('hidden')
+        document.querySelector('#forCorrr').classList.add('hidden')
     }
 
     if (json.prizes && json.prizes.medal) {

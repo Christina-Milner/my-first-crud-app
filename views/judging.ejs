@@ -33,27 +33,28 @@
         </div>
 
         <fieldset id="prizes" class="hidden">
-            <div>
+            <div id="isJudged">
                 <input type="radio" id="yesJudged" name="judged" value="yesJudged">
                 <label for="yesJudged">Judged</label>
                 <input type="radio" id="notJudged" name="judged" value="notJudged" checked>
                 <label for="notJudged">Not judged</label>
             </div>
             <legend>Prizes:</legend>
-            <div>
+            <div id="forMedals">
                 <input type="radio" id="bronze" name="medals" value="bronze">
                 <label for="bronze">Bronze</label>
                 <input type="radio" id="silver" name="medals" value="silver">
                 <label for="silver">Silver</label>
                 <input type="radio" id="gold" name="medals" value="gold">
                 <label for="gold">Gold</label>
+            </div>
             <div>
                 <input type="checkbox" id="bestOfShow" name="bestOfShow">
-                <label for="bestOfShow">Best in Show</label>
+                <label for="bestOfShow" id="forBestOfShow">Best in Show</label>
                 <input type="checkbox" id="junBestOfShow" name="junBestOfShow">
-                <label for="junBestOfShow">Junior Best in Show</label>
+                <label for="junBestOfShow" id="forJunBestOfShow">Junior Best in Show</label>
                 <input type="checkbox" id="corrr" name="corrr">
-                <label for="corrr">CORRR</label>
+                <label for="corrr" id="forCorrr">CORRR</label>
                 <input type="checkbox" id="peoplesChoice" name="peoplesChoice"> 
                 <label for="peoplesChoice">People's Choice</label>
                 <input type="text" id="sponsors" name="sponsors">

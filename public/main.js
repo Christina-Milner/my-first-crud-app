@@ -5,10 +5,11 @@
 - Add functionality to filter by prizes
 - Change add entry functionality so multiple people can't create an entry with the same id at the same time (done)
 - Now split up across 3 pages - all entries should always be clickable on judging page, with prizes available
-- Add CSS for judging page to colour differentiate not in competition / judged/ not judged
+- Add CSS for judging page to colour differentiate not in competition / judged/ not judged (done)
 - Only prizes available for not in comp are People's Choice and Sponsor prizes
 - Add functionality to check for entries with empty name so that IDs don't get incremented if someone clicks "add entry" and then goes to do something else (done)
 - Get rid of "edit this entry" button and make reg entries editable like in judging view if "edit entry" is clicked
+- Fix Not In Competition - judging form currently reverts judged back to false. Ideally don't have a judged flag at all, or at least need a value other than "false".
 */
 const addButton = document.querySelector('#addButton')
 const editButton = document.querySelector('#editEntries')
