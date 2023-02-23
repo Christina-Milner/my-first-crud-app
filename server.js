@@ -61,7 +61,7 @@ app.get('/filters:prize',(request, response)=>{
     .catch(error => console.error(error))
 })
  
-
+ 
 app.get('/numOfEntries',(request, response)=>{
     db.collection('modelShowRegTest').find().toArray()
     .then(data => {

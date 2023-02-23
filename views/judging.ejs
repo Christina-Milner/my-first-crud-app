@@ -65,7 +65,7 @@
     </form>
     <div class="entries">
         <% for(let i = 0; i < info.length; i++) {%>
-            <div class="entry" id=<%= info[i].id %>>
+            <div class="entry <%= !info[i].judged ? "notJudged" : info[i].judged == "N/A" ? "notInComp" : "judged" %>" id=<%= info[i].id %>>
                 <div>
                     <p>Number:</p>
                     <p>Name:</p>
@@ -73,7 +73,7 @@
                 </div>
                 <div>
                     <p><%= info[i].id %></p>
-                    <p><%= info[i].fullName %></p>
+                    <p><%= info[i].fullName ? info[i].fullName : "Empty entry!" %></p>
                     <p><%= !info[i].judged ? "No" : info[i].judged == "N/A" ? "N/A" : "Yes" %></p>
                 </div>
             </div>

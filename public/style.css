@@ -33,3 +33,15 @@ a {
     color: #fff;
     text-decoration: none;
 }
+
+.notJudged {
+    background-color: #d88282;
+}
+
+.notInComp {
+    background-color: #8b8b8b;
+}
+
+.judged {
+    background-color: #79df93;
+}
