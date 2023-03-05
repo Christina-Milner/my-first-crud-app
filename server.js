@@ -61,7 +61,7 @@ app.get('/filters:prize',(request, response)=>{
     .catch(error => console.error(error))
 })
  
- 
+
 app.get('/numOfEntries',(request, response)=>{
     db.collection('modelShowRegTest').find().toArray()
     .then(data => {
@@ -100,7 +100,7 @@ app.post('/addEntryJudge', (request, response) => {
     db.collection('modelShowRegTest').updateOne({
         id: Number(request.body.entryId)},{
             $set:{
-                judged: request.body.judged == "N/A" || request.body.judged == "yesJudged",
+                judged: request.body.judged == "notForJudging" ? "N/A" : request.body.judged == "yesJudged",
                 prizes: {
                     medal: request.body.medals,
                     bestofShow: request.body.bestOfShow == "on",
@@ -118,53 +118,20 @@ app.post('/addEntryJudge', (request, response) => {
     .catch(error => console.error(error))
 })
 
- // Feeling deprecated, might delete later
-/* app.post('/postEntry2', async (request, response) => {
-    async function getID() {
-        let entries = await db.collection('modelShowRegTest').find().toArray()
-        return entries.length
-    }
-    async function getLastID() {
-        let entries = await db.collection('modelShowRegTest').find().toArray()
-        let length = entries.length
-        let entry = entries[length - 1]
-
-        return entry.id
-    }
-    let currentID = await getID().then(res => res + 1)
-    .then(async res => {
-        await db.collection('modelShowRegTest').insertOne({
-            id: res,
-            fullName: "",
-            numOfModels: 0,
-            inCompetition: false,
-            prizes: {}})
-        return res
-    })
-    .then(async result => {
-        let lastID = await getLastID()
-        return lastID
-    })
-    .then(result => {
-        console.log('Entry Added')
-        response.send(String(result))
-    })
-    .catch(error => console.error(error))
-})
-*/
-
 app.post('/postEntry', (request, response) => {
     db.collection('modelShowRegTest').find().toArray()
     .then(res => {
         let num = res.length
-        let lastEntry = res[num - 1]
-        if (!lastEntry.fullName) {
-            id = lastEntry.id
-            console.log("Empty entry detected!")
-            response.send(String(id))
-            return
+        if (num > 0) {
+            let lastEntry = res[num - 1]
+            if (!lastEntry.fullName) {
+                id = lastEntry.id
+                console.log("Empty entry detected!")
+                response.send(String(id))
+                return
+            }
         }
-        id = lastEntry.id + 1
+        id = num + 1
         db.collection('modelShowRegTest').insertOne({
             "id": id,
             fullName: "",

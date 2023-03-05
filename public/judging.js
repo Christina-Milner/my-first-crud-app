@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
         headers: {'Content-Type': 'application/json'},
     })
     let json = await data.json()
+    console.log(json)
     document.querySelector('#inputForm').classList.remove('hidden')
     document.querySelectorAll('.entry').forEach(e => e.classList.add('hidden'))
     document.querySelector('#prizes').classList.remove('hidden')
@@ -21,14 +22,9 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelector('#name').innerText = json.fullName
     document.querySelector('#numOfModels').innerText = json.numOfModels
     document.querySelector('#inComp').innerText = json.inCompetition ? "In competition" : "Not in competition"
-    if (json.judged && json.judged !== "N/A") {
-        document.querySelector('#yesJudged').checked = true
-        document.querySelector('#notJudged').checked = false // Sort out not in competition
-    } else if (json.judged !== "N/A") {
-        document.querySelector('#yesJudged').checked = false
-        document.querySelector('#notJudged').checked = true
-    } else {
+    if (json.judged == "N/A") {
         document.querySelector('#isJudged').classList.add('hidden')
+        document.querySelector('#notForJudging').checked = true
         document.querySelector('#forMedals').classList.add('hidden')
         document.querySelector('#bestOfShow').classList.add('hidden')
         document.querySelector('#forBestOfShow').classList.add('hidden')
@@ -37,6 +33,13 @@ document.addEventListener('DOMContentLoaded', function() {
         document.querySelector('#corrr').classList.add('hidden')
         document.querySelector('#forCorrr').classList.add('hidden')
     }
+    else if (json.judged) {
+        document.querySelector('#yesJudged').checked = true
+        document.querySelector('#notJudged').checked = false
+    } else if (!json.judged) {
+        document.querySelector('#yesJudged').checked = false
+        document.querySelector('#notJudged').checked = true
+    } 
 
     if (json.prizes && json.prizes.medal) {
         let medal = json.prizes.medal
