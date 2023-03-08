@@ -8,12 +8,14 @@ Done or done-ish:
 - Only prizes available for not in comp are People's Choice and Sponsor prizes (done)
 - Now split up across 3 pages - all entries should always be clickable on judging page, with prizes available (done)
 - Fix Not In Competition - judging form currently reverts judged back to false. Ideally don't have a judged flag at all, or at least need a value other than "false". (done)
+- Add functionality to filter by prizes (done, with human-readable output)
 
+To do:
 - Add CSS to make it look not horrible
-- Add functionality to filter by prizes
 - Get rid of "edit this entry" button and make reg entries editable like in judging view if "edit entry" is clicked
 - Add values validation (no negative number of models etc.)
 - Ensure Junior and Adult categories are either/or and don't both show up in judging and it's clearly visible whether it's a junior
+- Add visual indicator what category is currently being looked at on filter results
 */
 const addButton = document.querySelector('#addButton')
 const editButton = document.querySelector('#editEntries')

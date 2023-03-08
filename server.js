@@ -13,7 +13,7 @@ MongoClient.connect(dbConnectionStr, { useUnifiedTopology: true })
         console.log(`Connected to ${dbName} Database`)
         db = client.db(dbName)
     })
-      
+    
 app.set('view engine', 'ejs')
 app.use(express.static('public'))
 app.use(express.urlencoded({ extended: true }))
@@ -55,7 +55,13 @@ app.get('/filters:prize',(request, response)=>{
     db.collection('modelShowRegTest').find().toArray()
     .then(data => {
         let prize = request.params.prize
-        data = data.filter(e => Object.values(e.prizes).includes(prize) || e.prizes[prize])
+        data = data.filter(e => {
+            if (prize == "sponsors") {
+                return e.prizes[prize] ? e.prizes[prize].join('') !== "" : false
+            } else {
+            return Object.values(e.prizes).includes(prize) || e.prizes[prize]
+        }
+    })
         response.render('filters.ejs', { info: data })
     })
     .catch(error => console.error(error))
