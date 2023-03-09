@@ -16,12 +16,18 @@ To do:
 - Add values validation (no negative number of models etc.)
 - Ensure Junior and Adult categories are either/or and don't both show up in judging and it's clearly visible whether it's a junior
 - Add visual indicator what category is currently being looked at on filter results
+- Add "no medal" option - presumably not everyone gets a medal
+- Add People's Choice to filter page
+- BIG ISSUE: Editing entry on the Registration page removes the name and # of models. FIX THIS.
 */
 const addButton = document.querySelector('#addButton')
 const editButton = document.querySelector('#editEntries')
 
 if (addButton) {addButton.addEventListener('click', openAddForm)}
 if (editButton) {editButton.addEventListener('click', editEntries)}
+
+
+// Function that retrieves the next ID number when "add entry" is clicked and populates the form with it
 
 async function openAddForm() {
     document.querySelectorAll('.entry').forEach(e => e.removeEventListener('click', event => editThis(event.target.parentElement)))
@@ -40,6 +46,8 @@ async function openAddForm() {
     document.querySelector('#inputForm').classList.remove('hidden')
     document.querySelector('#secretIdBox').value = id
 }
+
+// Function for making entries editable in Registration view - FIX ME (skip edit button stage)
 
 function editEntries() {
     document.querySelectorAll('.entry').forEach(e => e.addEventListener('click', event => {
@@ -61,6 +69,8 @@ function allEntriesEditable() {
         editThis(target)
     }))
 }
+
+// Function for editing an entry on the Registration page - FIX ME (name and # of models currently disappear)
 
 async function editThis(element) {
     const entryID = element.id
@@ -84,20 +94,3 @@ async function editThis(element) {
         document.querySelector('#notInComp').checked = true
     }
 }
-
-// Filter page
-const bronzeButton = document.querySelector('#bronze')
-const silverButton = document.querySelector('#silver')
-const goldButton = document.querySelector('#gold')
-const corrrButton = document.querySelector('#corrr')
-
-const filterButtons = [bronzeButton, silverButton, goldButton, corrrButton]
-/*
-filterButtons.forEach(button => button.addEventListener('click', event => {
-    filterThis(event.explicitOriginalTarget.id)
-}))
-
-function filterThis(prize) {
-    
-}
-*/
