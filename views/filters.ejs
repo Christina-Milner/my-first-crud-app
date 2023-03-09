@@ -37,8 +37,13 @@
                     <p><%= info[i].fullName %></p>
                     <p><% for (let prize of Object.keys(info[i].prizes).filter(e => info[i].prizes[e])) {%>
                         <% let prettyfied = {junBestOfShow: "Junior Best of Show", bestofShow: "Best of Show", peoplesChoice: "People's Choice"} %>
-                        <span><%- typeof(info[i].prizes[prize]) == "string" ? info[i].prizes[prize][0].toUpperCase() + info[i].prizes[prize].slice(1) + "<br>" : prize == "corrr" ? prize.toUpperCase() + "<br>" : prize in prettyfied ?
-                             prettyfied[prize] + "<br>": typeof(info[i].prizes[prize]) == "object" ? info[i].prizes[prize].every(e => !e) ? "" : "Sponsor: " + info[i].prizes[prize] + "<br>" : prize + "<br>" %></span>
+                        <span><%- typeof(info[i].prizes[prize]) == "string" ? info[i].prizes[prize][0].toUpperCase() + info[i].prizes[prize].slice(1) + "<br>" :
+                               prize == "corrr" ? prize.toUpperCase() + "<br>" :
+                               prize in prettyfied ? prettyfied[prize] + "<br>" :
+                               typeof(info[i].prizes[prize]) == "object" ?
+                               info[i].prizes[prize].every(e => !e) ? "" :
+                               "Sponsor: " + info[i].prizes[prize] + "<br>" :
+                                prize + "<br>" %></span>
                         <% } %>
                     </p>
                 </div>
