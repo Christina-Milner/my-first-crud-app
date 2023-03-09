@@ -41,9 +41,10 @@
                                prize == "corrr" ? prize.toUpperCase() + "<br>" :
                                prize in prettyfied ? prettyfied[prize] + "<br>" :
                                typeof(info[i].prizes[prize]) == "object" ?
-                               info[i].prizes[prize].every(e => !e) ? "" :
-                               "Sponsor: " + info[i].prizes[prize] + "<br>" :
-                                prize + "<br>" %></span>
+                                   info[i].prizes[prize].every(e => !e) ? "" :
+                                   "Sponsor: " + info[i].prizes[prize] + "<br>" :
+                                prize + "<br>" %>
+                        </span>
                         <% } %>
                     </p>
                 </div>
