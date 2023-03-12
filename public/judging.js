@@ -22,6 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelector('#name').innerText = json.fullName
     document.querySelector('#numOfModels').innerText = json.numOfModels
     document.querySelector('#inComp').innerText = json.inCompetition ? "In competition" : "Not in competition"
+    document.querySelector('#age').innerText = json.junior ? "Junior" : "Adult"
     if (json.judged == "N/A") {
         document.querySelector('#isJudged').classList.add('hidden')
         document.querySelector('#notForJudging').checked = true
@@ -65,4 +66,18 @@ document.addEventListener('DOMContentLoaded', function() {
     if (json.prizes && json.prizes.sponsors) {
         document.querySelector('#sponsors').value = typeof(json.prizes.sponsors) == "string" ? json.prizes.sponsors : json.prizes.sponsors.join(',')
     }
+    if (json.junior) {
+        document.querySelectorAll('.adultsOnly').forEach(e => e.classList.add('hidden'))
+    } else {
+        document.querySelectorAll('.kidsOnly').forEach(e => e.classList.add('hidden'))
+    }
+}
+
+// To make medals checkboxes where only one can be selected (as radio doesn't allow for unselecting)
+
+function onlyOne(checkbox) {
+    const checkboxes = document.getElementsByName('medals')
+    checkboxes.forEach((item) => {
+        if (item !== checkbox) item.checked = false
+    })
 }

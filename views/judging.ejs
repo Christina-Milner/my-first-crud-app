@@ -31,6 +31,8 @@
         </div>
         <div id="inComp">
         </div>
+        <div id="age">
+        </div>
 
         <fieldset id="prizes" class="hidden">
             <div id="isJudged">
@@ -42,18 +44,18 @@
             </div>
             <legend>Prizes:</legend>
             <div id="forMedals">
-                <input type="radio" id="bronze" name="medals" value="bronze">
+                <input type="checkbox" id="bronze" name="medals" value="bronze" onclick="onlyOne(this)">
                 <label for="bronze">Bronze</label>
-                <input type="radio" id="silver" name="medals" value="silver">
+                <input type="checkbox" id="silver" name="medals" value="silver" onclick="onlyOne(this)">
                 <label for="silver">Silver</label>
-                <input type="radio" id="gold" name="medals" value="gold">
+                <input type="checkbox" id="gold" name="medals" value="gold" onclick="onlyOne(this)">
                 <label for="gold">Gold</label>
             </div>
             <div>
-                <input type="checkbox" id="bestOfShow" name="bestOfShow">
-                <label for="bestOfShow" id="forBestOfShow">Best in Show</label>
-                <input type="checkbox" id="junBestOfShow" name="junBestOfShow">
-                <label for="junBestOfShow" id="forJunBestOfShow">Junior Best in Show</label>
+                <input type="checkbox" id="bestOfShow" name="bestOfShow" class="adultsOnly">
+                <label for="bestOfShow" id="forBestOfShow" class="adultsOnly">Best in Show</label>
+                <input type="checkbox" id="junBestOfShow" name="junBestOfShow" class="kidsOnly">
+                <label for="junBestOfShow" id="forJunBestOfShow" class="kidsOnly">Junior Best in Show</label>
                 <input type="checkbox" id="corrr" name="corrr">
                 <label for="corrr" id="forCorrr">CORRR</label>
                 <input type="checkbox" id="peoplesChoice" name="peoplesChoice"> 
@@ -71,11 +73,13 @@
                 <div>
                     <p>Number:</p>
                     <p>Name:</p>
+                    <p><%= info[i].junior ? "Junior" : "Adult" %></p>
                     <p>Judged:</p>
                 </div>
                 <div>
                     <p><%= info[i].id %></p>
                     <p><%= info[i].fullName ? info[i].fullName : "Empty entry!" %></p>
+                    <p>&nbsp;</p>
                     <p><%= !info[i].judged ? "No" : info[i].judged == "N/A" ? "N/A" : "Yes" %></p>
                 </div>
             </div>

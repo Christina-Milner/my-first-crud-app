@@ -43,6 +43,13 @@
         <input type="radio" id="yesJunior" name="junior" value="yesJunior">
         <label for="yesJunior">Junior</label>
     </div>
+    <div id="isJudged" class="hidden">
+        <input type="radio" id="yesJudged" name="judged" value="yesJudged">
+        <label for="yesJudged">Judged</label>
+        <input type="radio" id="notJudged" name="judged" value="notJudged">
+        <label for="notJudged">Not judged</label>
+        <input type="radio" id="notForJudging" name="judged" value="notForJudging" class="hidden">
+    </div>
     <input type="submit">
 </form>
 <div class="entries">
@@ -58,7 +65,6 @@
                 <p><%= info[i].fullName %></p>
                 <p><%= info[i].numOfModels %></p>
             </div>
-            <button class="hidden editThis">Edit this entry</button>
         </div>
     <% } %>
 </div>
