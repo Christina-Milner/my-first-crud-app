@@ -21,7 +21,7 @@
     <a href="/filterssilver"><button id="silver">Silver</button></a>
     <a href="/filtersgold"><button id="gold">Gold</button></a>
     <a href="/filterscorrr"><button id="corrr">CORRR</button></a>
-    <a href="/filtersbestofShow"><button id="bestofShow">Best of Show</button></a>
+    <a href="/filtersbestOfShow"><button id="bestOfShow">Best of Show</button></a>
     <a href="/filtersjunBestOfShow"><button id="junBestOfShow">Junior Best of Show</button></a>
     <a href="/filterspeoplesChoice"><button id="peoplesChoice">People's Choice</button></a>
     <a href="/filterssponsors"><button id="sponsors">Sponsor Prizes</button></a>
@@ -37,7 +37,7 @@
                     <p><%= info[i].id %></p>
                     <p><%= info[i].fullName %></p>
                     <p><% for (let prize of Object.keys(info[i].prizes).filter(e => info[i].prizes[e])) {%>
-                        <% let prettyfied = {junBestOfShow: "Junior Best of Show", bestofShow: "Best of Show", peoplesChoice: "People's Choice"} %>
+                        <% let prettyfied = {junBestOfShow: "Junior Best of Show", bestOfShow: "Best of Show", peoplesChoice: "People's Choice"} %>
                         <span><%- typeof(info[i].prizes[prize]) == "string" ? info[i].prizes[prize][0].toUpperCase() + info[i].prizes[prize].slice(1) + "<br>" :
                                prize == "corrr" ? prize.toUpperCase() + "<br>" :
                                prize in prettyfied ? prettyfied[prize] + "<br>" :

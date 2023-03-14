@@ -13,7 +13,6 @@ document.addEventListener('DOMContentLoaded', function() {
         headers: {'Content-Type': 'application/json'},
     })
     let json = await data.json()
-    console.log(json)
     document.querySelector('#inputForm').classList.remove('hidden')
     document.querySelectorAll('.entry').forEach(e => e.classList.add('hidden'))
     document.querySelector('#prizes').classList.remove('hidden')
@@ -80,4 +79,16 @@ function onlyOne(checkbox) {
     checkboxes.forEach((item) => {
         if (item !== checkbox) item.checked = false
     })
+}
+
+// To ensure People's Choice, Best of Show and Junior Best of Show can only be awarded once
+
+async function checkIfTaken(prize) {
+    let taken = await fetch(`checkFor_${prize}`)
+    taken = await taken.json()
+    let prettyfied = {junBestOfShow: "Junior Best of Show", bestOfShow: "Best of Show", peoplesChoice: "People's Choice"}
+    if (taken.taken) {
+        document.querySelector('#warning').innerText = `Warning! ${prettyfied[prize]} has already been assigned!`
+        document.querySelector('#warning').classList.remove('hidden')
+    }
 }

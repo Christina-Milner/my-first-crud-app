@@ -14,13 +14,14 @@ Done or done-ish:
 - Add People's Choice to filter page - done
 - Add "no medal" option - presumably not everyone gets a medal - done, bronze/silver/gold are now checkboxes that do not allow multiple selections
 - Ensure Junior and Adult categories are either/or and don't both show up in judging and it's clearly visible whether it's a junior - done
+- Add values validation (no negative number of models etc.) - done, name & num of models are required & num of models is min 1
 
 To do:
 - Add CSS to make it look not horrible
-- Add values validation (no negative number of models etc.)
+- Separate juniors from the others in the prizes filter
 - Add visual indicator what category is currently being looked at on filter results
 - Add visual highlighting to "edit mode" on registration page
-- Add validation/error warning that Best in Show, Junior Best in Show and People's Choice can only be awarded once
+- Add validation/error warning that Best in Show, Junior Best in Show and People's Choice can only be awarded once - in progress, do not allow option to be selected and display who it is already assigned to
 */
 
 const addButton = document.querySelector('#addButton')

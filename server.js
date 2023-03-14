@@ -26,7 +26,7 @@ app.get('/',(request, response)=>{
     })
     .catch(error => console.error(error))
 })
-
+ 
 app.get('/registration',(request, response)=>{
     db.collection('modelShowRegTest').find().toArray()
     .then(data => {
@@ -63,6 +63,19 @@ app.get('/filters:prize',(request, response)=>{
         }
     })
         response.render('filters.ejs', { info: data })
+    })
+    .catch(error => console.error(error))
+})
+
+app.get('/checkFor_:prize',(request, response)=>{
+    db.collection('modelShowRegTest').find().toArray()
+    .then(data => {
+        let prize = request.params.prize
+        console.log("Checking for ", prize)
+        data = data.filter(e => e["prizes"][prize])
+        console.log(data)
+        let result = data.length > 0 ? true : false
+        response.send({"taken": result})
     })
     .catch(error => console.error(error))
 })
@@ -109,7 +122,7 @@ app.post('/addEntryJudge', (request, response) => {
                 judged: request.body.judged == "notForJudging" ? "N/A" : request.body.judged == "yesJudged",
                 prizes: {
                     medal: request.body.medals,
-                    bestofShow: request.body.bestOfShow == "on",
+                    bestOfShow: request.body.bestOfShow == "on",
                     junBestOfShow: request.body.junBestOfShow == "on",
                     corrr: request.body.corrr == "on",
                     peoplesChoice: request.body.peoplesChoice == "on",

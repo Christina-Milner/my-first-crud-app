@@ -52,13 +52,14 @@
                 <label for="gold">Gold</label>
             </div>
             <div>
-                <input type="checkbox" id="bestOfShow" name="bestOfShow" class="adultsOnly">
-                <label for="bestOfShow" id="forBestOfShow" class="adultsOnly">Best in Show</label>
-                <input type="checkbox" id="junBestOfShow" name="junBestOfShow" class="kidsOnly">
-                <label for="junBestOfShow" id="forJunBestOfShow" class="kidsOnly">Junior Best in Show</label>
+                <div id="warning" class="hidden"></div>
+                <input type="checkbox" id="bestOfShow" name="bestOfShow" class="adultsOnly" onclick="checkIfTaken('bestOfShow')">
+                <label for="bestOfShow" id="forBestOfShow" class="adultsOnly">Best of Show</label>
+                <input type="checkbox" id="junBestOfShow" name="junBestOfShow" class="kidsOnly" onclick="checkIfTaken('junBestOfShow')">
+                <label for="junBestOfShow" id="forJunBestOfShow" class="kidsOnly">Junior Best of Show</label>
                 <input type="checkbox" id="corrr" name="corrr">
                 <label for="corrr" id="forCorrr">CORRR</label>
-                <input type="checkbox" id="peoplesChoice" name="peoplesChoice"> 
+                <input type="checkbox" id="peoplesChoice" name="peoplesChoice" onclick="checkIfTaken('peoplesChoice')"> 
                 <label for="peoplesChoice">People's Choice</label>
                 <input type="text" id="sponsors" name="sponsors">
                 <label for="sponsors">Sponsor Prize</label>
