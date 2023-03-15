@@ -88,12 +88,12 @@ function onlyOne(checkbox) {
 // To ensure People's Choice, Best of Show and Junior Best of Show can only be awarded once
 
 async function checkIfTaken(checkbox, prize) {
-    checkbox.checked = false
     let taken = await fetch(`checkFor_${prize}`)
     taken = await taken.json()
     console.log(taken)
     let prettyfied = {junBestOfShow: "Junior Best of Show", bestOfShow: "Best of Show", peoplesChoice: "People's Choice"}
-    if (taken.length) {
+    if (taken.length && taken[0].id !== Number(document.querySelector('#secretIdBox').value)) {
+        checkbox.checked = false
         document.querySelector('#warning').innerHTML = `${prettyfied[prize]} has already been assigned to Number ${taken[0].id}, ${taken[0].fullName}!`
         document.querySelector(`[id="${taken[0].id}"]`).classList.remove('hidden')
         document.querySelectorAll('.entry').forEach(e => {
