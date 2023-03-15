@@ -35,6 +35,7 @@
         </div>
 
         <fieldset id="prizes" class="hidden">
+            <div id="warning" class="hidden"></div>
             <div id="isJudged">
                 <input type="radio" id="yesJudged" name="judged" value="yesJudged">
                 <label for="yesJudged">Judged</label>
@@ -52,14 +53,13 @@
                 <label for="gold">Gold</label>
             </div>
             <div>
-                <div id="warning" class="hidden"></div>
-                <input type="checkbox" id="bestOfShow" name="bestOfShow" class="adultsOnly" onclick="checkIfTaken('bestOfShow')">
+                <input type="checkbox" id="bestOfShow" name="bestOfShow" class="adultsOnly" onclick="checkIfTaken(this, 'bestOfShow')">
                 <label for="bestOfShow" id="forBestOfShow" class="adultsOnly">Best of Show</label>
-                <input type="checkbox" id="junBestOfShow" name="junBestOfShow" class="kidsOnly" onclick="checkIfTaken('junBestOfShow')">
+                <input type="checkbox" id="junBestOfShow" name="junBestOfShow" class="kidsOnly" onclick="checkIfTaken(this, 'junBestOfShow')">
                 <label for="junBestOfShow" id="forJunBestOfShow" class="kidsOnly">Junior Best of Show</label>
                 <input type="checkbox" id="corrr" name="corrr">
                 <label for="corrr" id="forCorrr">CORRR</label>
-                <input type="checkbox" id="peoplesChoice" name="peoplesChoice" onclick="checkIfTaken('peoplesChoice')"> 
+                <input type="checkbox" id="peoplesChoice" name="peoplesChoice" onclick="checkIfTaken(this, 'peoplesChoice')"> 
                 <label for="peoplesChoice">People's Choice</label>
                 <input type="text" id="sponsors" name="sponsors">
                 <label for="sponsors">Sponsor Prize</label>

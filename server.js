@@ -71,11 +71,8 @@ app.get('/checkFor_:prize',(request, response)=>{
     db.collection('modelShowRegTest').find().toArray()
     .then(data => {
         let prize = request.params.prize
-        console.log("Checking for ", prize)
         data = data.filter(e => e["prizes"][prize])
-        console.log(data)
-        let result = data.length > 0 ? true : false
-        response.send({"taken": result})
+        response.json(data)
     })
     .catch(error => console.error(error))
 })

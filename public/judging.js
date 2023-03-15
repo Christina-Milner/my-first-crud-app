@@ -1,3 +1,5 @@
+// Make all entries click to edit on DOM load
+
 document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('.entry').forEach(e => e.addEventListener('click', event => {
         let target = event.target.classList.contains('entry') ? event.target : event.target.parentElement.classList.contains('entry') ? event.target.parentElement : event.target.parentElement.parentElement
@@ -5,8 +7,10 @@ document.addEventListener('DOMContentLoaded', function() {
     }))
  }, false);
 
+// This opens the editing form and populates it with the database info for the relevant entry
 
  async function editThis(element) {
+    document.querySelector('#warning').classList.add('hidden')
     const entryID = element.id
     const data = await fetch(`ID_${entryID}`, {
         method: 'get',
@@ -83,12 +87,20 @@ function onlyOne(checkbox) {
 
 // To ensure People's Choice, Best of Show and Junior Best of Show can only be awarded once
 
-async function checkIfTaken(prize) {
+async function checkIfTaken(checkbox, prize) {
+    checkbox.checked = false
     let taken = await fetch(`checkFor_${prize}`)
     taken = await taken.json()
+    console.log(taken)
     let prettyfied = {junBestOfShow: "Junior Best of Show", bestOfShow: "Best of Show", peoplesChoice: "People's Choice"}
-    if (taken.taken) {
-        document.querySelector('#warning').innerText = `Warning! ${prettyfied[prize]} has already been assigned!`
+    if (taken.length) {
+        document.querySelector('#warning').innerHTML = `${prettyfied[prize]} has already been assigned to Number ${taken[0].id}, ${taken[0].fullName}!`
+        document.querySelector(`[id="${taken[0].id}"]`).classList.remove('hidden')
+        document.querySelectorAll('.entry').forEach(e => {
+            if (e.id !== String(taken[0].id)) {
+                e.classList.add('hidden') // Make the irrelevant one go away if switching between prizes that are already taken
+            }
+        })
         document.querySelector('#warning').classList.remove('hidden')
     }
 }
