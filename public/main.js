@@ -17,10 +17,10 @@ Done or done-ish:
 - Add values validation (no negative number of models etc.) - done, name & num of models are required & num of models is min 1
 - Add visual indicator what category is currently being looked at on filter results and for "edit mode" on registration page - done
 - Add validation/error warning that Best in Show, Junior Best in Show and People's Choice can only be awarded once - done, now also brings up entry that has already been awarded that prize
+- Separate juniors from the others in the prizes filter - done!
 
 To do:
 - Add CSS to make it look not horrible
-- Separate juniors from the others in the prizes filter
 */
 
 // Hack to highlight which category is being filtered by on the Filters page
@@ -34,6 +34,8 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }) 
  }, false);
+
+// Other buttons
 
 const addButton = document.querySelector('#addButton')
 const editButton = document.querySelector('#editEntries')

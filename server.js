@@ -179,13 +179,14 @@ app.get('/filters:prize',(request, response)=>{
             return Object.values(e.prizes).includes(prize) || e.prizes[prize]
         }
     })
+        console.log(data)
         response.render('filters.ejs', { info: data })
     })
     .catch(error => console.error(error))
 })
 
 // Hello
-
+ 
 app.listen(process.env.PORT || PORT, ()=>{
     console.log(`Server running on port ${PORT}`)
 })
