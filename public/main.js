@@ -15,14 +15,25 @@ Done or done-ish:
 - Add "no medal" option - presumably not everyone gets a medal - done, bronze/silver/gold are now checkboxes that do not allow multiple selections
 - Ensure Junior and Adult categories are either/or and don't both show up in judging and it's clearly visible whether it's a junior - done
 - Add values validation (no negative number of models etc.) - done, name & num of models are required & num of models is min 1
+- Add visual indicator what category is currently being looked at on filter results and for "edit mode" on registration page - done
+- Add validation/error warning that Best in Show, Junior Best in Show and People's Choice can only be awarded once - done, now also brings up entry that has already been awarded that prize
 
 To do:
 - Add CSS to make it look not horrible
 - Separate juniors from the others in the prizes filter
-- Add visual indicator what category is currently being looked at on filter results
-- Add visual highlighting to "edit mode" on registration page
-- Add validation/error warning that Best in Show, Junior Best in Show and People's Choice can only be awarded once - in progress, do not allow option to be selected and display who it is already assigned to
 */
+
+// Hack to highlight which category is being filtered by on the Filters page
+
+const filterButtons = document.querySelectorAll('.filterbutton')
+
+document.addEventListener('DOMContentLoaded', function() {
+    filterButtons.forEach(e => {
+        if (window.location.href.includes(e.id)) {
+            e.classList.add('active')
+        }
+    }) 
+ }, false);
 
 const addButton = document.querySelector('#addButton')
 const editButton = document.querySelector('#editEntries')
@@ -30,11 +41,15 @@ const editButton = document.querySelector('#editEntries')
 if (addButton) {addButton.addEventListener('click', openAddForm)}
 if (editButton) {editButton.addEventListener('click', editEntries)}
 
+// Highlight edit button when entries are clickable
+if (editButton) {editButton.addEventListener('click', () => editButton.classList.add('active'))}
+
 
 // Function that retrieves the next ID number when "add entry" is clicked and populates the form with it
 
 async function openAddForm() {
     document.querySelectorAll('.entry').forEach(e => e.removeEventListener('click', event => editThis(event.target.parentElement)))
+    editButton.classList.remove('active')
     const res = await fetch('/postEntry', {
         method: 'POST',
         headers: {
@@ -64,6 +79,7 @@ function editEntries() {
 // Function for editing an entry on the Registration page
 
 async function editThis(element) {
+    editButton.classList.remove('active')
     const entryID = element.id
     const data = await fetch(`ID_${entryID}`, {
         method: 'get',

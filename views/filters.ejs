@@ -16,16 +16,17 @@
         <span><a href="/filters">View/Filter entries</span></a>
     </nav>
     <h1>Miniatures Show Results</h1>
-    <a href="/filters"><button id="all">View all</button></a>
-    <a href="/filtersbronze"><button id="bronze">Bronze</button></a>
-    <a href="/filterssilver"><button id="silver">Silver</button></a>
-    <a href="/filtersgold"><button id="gold">Gold</button></a>
-    <a href="/filterscorrr"><button id="corrr">CORRR</button></a>
-    <a href="/filtersbestOfShow"><button id="bestOfShow">Best of Show</button></a>
-    <a href="/filtersjunBestOfShow"><button id="junBestOfShow">Junior Best of Show</button></a>
-    <a href="/filterspeoplesChoice"><button id="peoplesChoice">People's Choice</button></a>
-    <a href="/filterssponsors"><button id="sponsors">Sponsor Prizes</button></a>
-
+<div class="filterbuttons">
+    <a href="/filters"><p id="all" class="filterbutton">View all</p></a>
+    <a href="/filtersbronze"><p id="bronze" class="filterbutton">Bronze</p></a>
+    <a href="/filterssilver"><p id="silver" class="filterbutton">Silver</p></a>
+    <a href="/filtersgold"><p id="gold" class="filterbutton">Gold</p></a>
+    <a href="/filterscorrr"><p id="corrr" class="filterbutton">CORRR</p></a>
+    <a href="/filtersbestOfShow"><p id="bestOfShow" class="filterbutton">Best of Show</p></a>
+    <a href="/filtersjunBestOfShow"><p id="junBestOfShow" class="filterbutton">Junior Best of Show</p></a>
+    <a href="/filterspeoplesChoice"><p id="peoplesChoice" class="filterbutton">People's Choice</p></a>
+    <a href="/filterssponsors"><p id="sponsors" class="filterbutton">Sponsor Prizes</p></a>
+</div>
     <div class="entries">
         <% for(let i = 0; i < info.length; i++) {%>
             <div class="entry" id=<%= info[i].id %>>
