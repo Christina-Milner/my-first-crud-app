@@ -21,6 +21,8 @@ Done or done-ish:
 
 To do:
 - Add CSS to make it look not horrible
+- Add Statistics to the filters - # of participants (adult/junior), # of models total
+- Fix entries layout in filters view, broken by CSS changes
 */
 
 // Hack to highlight which category is being filtered by on the Filters page

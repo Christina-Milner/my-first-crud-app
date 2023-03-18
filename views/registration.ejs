@@ -13,18 +13,21 @@
     <nav class = "pageNav">
         <span><a href="/registration">Registration</a></span>
         <span><a href="/judging">Judging<span></a></span>
-        <span><a href="/filters">View/Filter entries</span></a>
+        <span><a href="/filters">Filters</span></a>
+        <span><a href="/help">Help</span></a>
     </nav>
 
 <h1>Register entrants</h1>
-<button id="addButton">Add Entry</button>
-<button id="editEntries">Edit an entry</button>
+<div class="buttonsGoHere">
+    <span id="addButton" class="regButtons">Add Entry</span>
+    <span id="editEntries" class="regButtons">Edit</span>
+</div>
 <form action="/addEntryReg" method="POST" id="inputForm" class="hidden">
     <input type ="hidden" name="entryId" id="secretIdBox">
     <div id="forID">
     </div>
     <div>
-        <label for="name">Name</label>
+        <label for="name">Name&nbsp;&nbsp;&nbsp;</label>
         <input type="text" placeholder="Full name" name="name" id="name" required="required">
     </div>
     <div>
@@ -50,7 +53,9 @@
         <label for="notJudged">Not judged</label>
         <input type="radio" id="notForJudging" name="judged" value="notForJudging" class="hidden">
     </div>
-    <input type="submit">
+    <div>
+        <input type="submit" value="Submit">
+    </div>
 </form>
 <div class="entries">
     <% for(let i = 0; i < info.length; i++) {%>
@@ -58,12 +63,10 @@
             <div>
                 <p>Number:</p>
                 <p>Name:</p>
-                <p>Models:</p>
             </div>
             <div>
                 <p><%= info[i].id %></p>
                 <p><%= info[i].fullName %></p>
-                <p><%= info[i].numOfModels %></p>
             </div>
         </div>
     <% } %>

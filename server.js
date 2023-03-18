@@ -31,8 +31,14 @@ app.get('/',(request, response)=>{
     .catch(error => console.error(error))
 })
 
-// Registration page
+// Help page
 
+app.get('/help',(request, response)=>{
+        response.render('help.ejs')
+})
+
+// Registration page
+ 
 app.get('/registration',(request, response)=>{
     db.collection('modelShowRegTest').find().toArray()
     .then(data => {
