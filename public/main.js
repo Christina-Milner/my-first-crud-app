@@ -54,6 +54,7 @@ if (editButton) {editButton.addEventListener('click', () => editButton.classList
 async function openAddForm() {
     document.querySelectorAll('.entry').forEach(e => e.removeEventListener('click', event => editThis(event.target.parentElement)))
     editButton.classList.remove('active')
+    document.querySelector('.buttonsGoHere').classList.add('hidden')
     const res = await fetch('/postEntry', {
         method: 'POST',
         headers: {
@@ -78,12 +79,13 @@ function editEntries() {
         editThis(target)
     }))
 }
-
+ 
 
 // Function for editing an entry on the Registration page
 
 async function editThis(element) {
     editButton.classList.remove('active')
+    document.querySelector('.buttonsGoHere').classList.add('hidden')
     const entryID = element.id
     const data = await fetch(`ID_${entryID}`, {
         method: 'get',

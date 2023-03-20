@@ -7,6 +7,7 @@
 
 html {
     font-family: 'Heebo', sans-serif;
+    box-sizing: border-box;
 }
 
 img {
@@ -29,12 +30,14 @@ header {
 form {
     display: flex;
     flex-flow: column;
-    margin-bottom: 2%;
-    margin-left: 25%;
+    width: 70%;
+    margin: 0 auto;
     line-height: 1.5em;
     font-size: 1.5em;
     font-weight: 500;
+    margin-bottom: 2%;
 }
+
 
 .hidden {
     display: none !important;
@@ -43,12 +46,13 @@ form {
 .entries {
     display: flex;
     flex-flow: column wrap;
+    width: 80%;
+    margin: 0 auto;
 }
 
 .entry {
     display: flex;
     border: 2px solid grey;
-    padding-left: 5%;
     gap: 1%;
     line-height: 1em;
 }
@@ -138,10 +142,37 @@ h1, h2 {
     margin-bottom: 2%;
 }
 
-input[type=submit] {
-    font-size: 1em;
-    padding: 1%;
-    border-radius: 0;
-    background-color: rgb(187, 98, 187);
+span {
+    padding: 0;
+}
 
+input[type=submit], .cancel {
+    vertical-align: middle;
+    font-size: 1em;
+    padding: 1% 0.5%;
+    line-height: 1em;
+    border-radius: 0;
+    border: 1px solid black;
+    background-color: rgb(187, 98, 187)
+
+}
+
+.cancel {
+    display: inline-block;
+    background-color: #ec7777;
+    margin-left: 2%;
+    line-height: 1em;
+}
+
+#age {
+    font-weight: 700;
+    color: #fff;
+}
+
+.adult {
+    background-color: rgb(129, 64, 129);
+}
+
+.junior {
+    background-color: rgb(230, 131, 230);
 }

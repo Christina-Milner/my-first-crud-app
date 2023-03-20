@@ -18,7 +18,7 @@
         <span><a href="/help">Help</span></a>
     </nav>
     <h1>Miniatures Show Judging</h1>
-    <form action="/addEntryJudge" method="POST" id="inputForm" class="hidden">
+    <form action="/addEntryJudge" method="POST" id="inputForm" class="hidden judgeForm">
         <input type ="hidden" name="entryId" id="secretIdBox">
         <div id="forID">
         </div>
@@ -67,7 +67,9 @@
             </div>
             
         </fieldset>
-        <input type="submit">
+        <div>
+            <input type="submit">
+        </div>
     </form>
     <div class="entries">
         <% for(let i = 0; i < info.length; i++) {%>

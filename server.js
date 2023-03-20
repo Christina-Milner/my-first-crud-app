@@ -21,7 +21,7 @@ app.use(express.static('public'))
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 
-// Main page
+// Main page 
 
 app.get('/',(request, response)=>{
     db.collection('modelShowRegTest').find().toArray()
@@ -30,13 +30,13 @@ app.get('/',(request, response)=>{
     })
     .catch(error => console.error(error))
 })
-
-// Help page
+ 
+// Help page 
 
 app.get('/help',(request, response)=>{
         response.render('help.ejs')
 })
-
+ 
 // Registration page
  
 app.get('/registration',(request, response)=>{

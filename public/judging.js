@@ -26,6 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelector('#numOfModels').innerText = json.numOfModels
     document.querySelector('#inComp').innerText = json.inCompetition ? "In competition" : "Not in competition"
     document.querySelector('#age').innerText = json.junior ? "Junior" : "Adult"
+    document.querySelector('#age').classList.add(json.junior ? "junior" : "adult")
     if (json.judged == "N/A") {
         document.querySelector('#isJudged').classList.add('hidden')
         document.querySelector('#notForJudging').checked = true
