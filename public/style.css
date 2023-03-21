@@ -16,7 +16,8 @@ img {
 
 ul {
     list-style-type: square;
-    padding-left: 30%;
+    width: 50%;
+    margin: 0 auto;
 }
 
 header {
