@@ -37,7 +37,7 @@ app.get('/help',(request, response)=>{
         response.render('help.ejs')
 })
  
-// Registration page
+// Registration page  
  
 app.get('/registration',(request, response)=>{
     db.collection('modelShowRegTest').find().toArray()

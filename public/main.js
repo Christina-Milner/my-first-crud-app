@@ -20,11 +20,11 @@ Done or done-ish:
 - Separate juniors from the others in the prizes filter - done!
 - Add CSS to make it look not horrible - would call this mostly done!
 - Fix entries layout in filters view, broken by CSS changes - done, was caused by vertical centering
+- Get rid of double border between entries - done. I still hate CSS.
+- Not in competition is eligible for CORRR after all - done.
 
 To do:
 - Add Statistics to the filters - # of participants (adult/junior), # of models total
-- Get rid of double border between entries
-- Not in competition is eligible for CORRR after all
 */
 
 // Hack to highlight which category is being filtered by on the Filters page

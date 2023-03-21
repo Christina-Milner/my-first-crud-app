@@ -35,8 +35,6 @@ document.addEventListener('DOMContentLoaded', function() {
         document.querySelector('#forBestOfShow').classList.add('hidden')
         document.querySelector('#junBestOfShow').classList.add('hidden')
         document.querySelector('#forJunBestOfShow').classList.add('hidden')
-        document.querySelector('#corrr').classList.add('hidden')
-        document.querySelector('#forCorrr').classList.add('hidden')
     }
     else if (json.judged) {
         document.querySelector('#yesJudged').checked = true

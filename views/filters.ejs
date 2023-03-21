@@ -32,8 +32,8 @@
             <a href="/filterssponsors"><p id="sponsors" class="filterbutton big">Sponsor Prizes</p></a>
         </div>
     </div>
-    <div class="entries">
         <h2>Juniors</h2>
+        <div class="entries">
         <%  let infoJuniors = info.filter(e => e.junior)
             for(let i = 0; i < infoJuniors.length; i++) {%>
             <div class="entry" id=<%= infoJuniors[i].id %>>
@@ -59,7 +59,9 @@
                 </div>
             </div>
         <% } %>
+        </div>
         <h2>Adults</h2>
+        <div class="entries">
         <%  let infoAdults = info.filter(e => !e.junior)
         for(let i = 0; i < infoAdults.length; i++) {%>
         <div class="entry" id=<%= infoAdults[i].id %>>
@@ -85,6 +87,7 @@
             </div>
         </div>
     <% } %>
+    </div>
     </div>
 
 </body>

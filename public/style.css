@@ -52,10 +52,21 @@ form {
 }
 
 .entry {
+    padding: 0 2%;
     display: flex;
     border: 2px solid grey;
+    border-width: 1px 2px;
     gap: 1%;
     line-height: 1em;
+}
+
+
+.entries .entry:first-child, h2 + .entry {
+    border-top: 2px solid grey;
+}
+
+.entries .entry:last-child {
+    border-bottom: 2px solid grey;
 }
 
 .titleNav, .pageNav {
