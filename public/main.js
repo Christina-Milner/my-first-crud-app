@@ -18,11 +18,13 @@ Done or done-ish:
 - Add visual indicator what category is currently being looked at on filter results and for "edit mode" on registration page - done
 - Add validation/error warning that Best in Show, Junior Best in Show and People's Choice can only be awarded once - done, now also brings up entry that has already been awarded that prize
 - Separate juniors from the others in the prizes filter - done!
+- Add CSS to make it look not horrible - would call this mostly done!
+- Fix entries layout in filters view, broken by CSS changes - done, was caused by vertical centering
 
 To do:
-- Add CSS to make it look not horrible
 - Add Statistics to the filters - # of participants (adult/junior), # of models total
-- Fix entries layout in filters view, broken by CSS changes
+- Get rid of double border between entries
+- Not in competition is eligible for CORRR after all
 */
 
 // Hack to highlight which category is being filtered by on the Filters page
