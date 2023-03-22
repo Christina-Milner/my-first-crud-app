@@ -22,9 +22,9 @@ Done or done-ish:
 - Fix entries layout in filters view, broken by CSS changes - done, was caused by vertical centering
 - Get rid of double border between entries - done. I still hate CSS.
 - Not in competition is eligible for CORRR after all - done.
+- Add Statistics to the filters - # of participants (adult/junior), # of models total - done
 
 To do:
-- Add Statistics to the filters - # of participants (adult/junior), # of models total
 */
 
 // Hack to highlight which category is being filtered by on the Filters page

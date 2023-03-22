@@ -188,3 +188,15 @@ input[type=submit], .cancel {
 .junior {
     background-color: rgb(230, 131, 230);
 }
+
+.numOfThings {
+    display: flex;
+    justify-content: center;
+    gap: 1%;
+    font-size: 1.5em;
+    font-weight: 600;
+}
+
+.num {
+    color: rgb(141, 52, 141);
+}

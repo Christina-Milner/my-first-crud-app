@@ -191,6 +191,17 @@ app.get('/filters:prize',(request, response)=>{
     .catch(error => console.error(error))
 })
 
+// Statistics page 
+
+app.get('/stats',(request, response)=>{
+    db.collection('modelShowRegTest').find().toArray()
+    .then(data => {
+        response.render('stats.ejs', { info: data })
+    })
+    .catch(error => console.error(error))
+})
+
+
 // Hello
  
 app.listen(process.env.PORT || PORT, ()=>{
