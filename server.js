@@ -24,11 +24,7 @@ app.use(express.json())
 // Main page 
 
 app.get('/',(request, response)=>{
-    db.collection('modelShowRegTest').find().toArray()
-    .then(data => {
-        response.render('index.ejs', { info: data })
-    })
-    .catch(error => console.error(error))
+    response.render('index.ejs')
 })
  
 // Help page 
