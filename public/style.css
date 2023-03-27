@@ -73,6 +73,8 @@ form {
     display: flex;
     justify-content: center;
     background-color: #000;
+    overflow: auto;
+    white-space: nowrap;
 }
 
 .titleNav > span, .pageNav > span {
@@ -123,6 +125,7 @@ a {
 .iHateCSS {
     display: flex;
     justify-content: center;
+    flex-flow: row wrap;
     gap: 1%;
 }
 
@@ -199,4 +202,21 @@ input[type=submit], .cancel {
 
 .num {
     color: rgb(141, 52, 141);
+}
+
+@media (max-width: 700px) {
+    .titleNav > span, .pageNav > span {
+        font-size: 1em;
+        padding: 0.75em 0.5em;
+    }
+
+    ul {
+        width: 80%;
+    }
+
+    form {
+    width: 90%;
+    line-height: 1.25em;
+    font-size: 1.25em;
+}
 }
